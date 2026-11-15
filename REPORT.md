@@ -6,6 +6,10 @@ Paper: A. AlAmmouri, J. Mo, V. V. Ratnam, B. L. Ng, R. W. Heath Jr., J. Lee, J. 
 Environment: MATLAB R2026b Update 1, Windows 11, 16 threads, 32 GB, no toolbox.
 Gap numbers **G1–G7** are local to this repository.
 
+**Reproducibility.** The whole tree was re-run from a fresh copy (`run_all`, about 2 min) and
+all 14 output files came out byte-identical, timings included: this repository has no run-time
+dependent output at all.
+
 ---
 
 ## 1 What is covered

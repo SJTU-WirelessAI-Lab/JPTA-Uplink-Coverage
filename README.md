@@ -71,16 +71,17 @@ the model that had to be got right:
 
 ```matlab
 cd matlab
-run_all              % all figures, about 3 min (Fig. 13/14 dominate)
+run_all              % all figures, about 2 min (Fig. 13/14 dominate)
 ```
 
 Single experiment:
 
 ```matlab
 run_all('fig4')     % Fig. 4, Table 5, Table 6            ~12 s
-run_all('fig5')     % Fig. 5 and Fig. 6                    ~13 s
-run_all('fig9')     % Fig. 9 and Fig. 10                   ~42 s
-run_all('fig12')    % Fig. 12, Fig. 13, Fig. 14            ~2.2 min
+run_all('fig5')     % Fig. 5 and Fig. 6                     ~4 s
+run_all('fig9')     % Fig. 9 and Fig. 10                   ~33 s
+run_all('fig12')    % Fig. 12, Fig. 13, Fig. 14            ~75 s
+run_all('compare')  % the point-by-point table (needs fig12)  <1 s
 run_all('compare')  % point-by-point table (needs fig12 first)
 ```
 

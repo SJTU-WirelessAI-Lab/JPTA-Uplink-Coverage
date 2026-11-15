@@ -60,16 +60,16 @@
 
 ```matlab
 cd matlab
-run_all              % 全部图，约3 min（Fig.13/14占大头）
+run_all              % 全部图，约2 min（Fig.13/14占大头）
 ```
 
 单独跑某一项：
 
 ```matlab
 run_all('fig4')     % Fig.4、Table 5、Table 6      ~12 s
-run_all('fig5')     % Fig.5与Fig.6                 ~13 s
-run_all('fig9')     % Fig.9与Fig.10                ~42 s
-run_all('fig12')    % Fig.12、Fig.13、Fig.14       ~2.2 min
+run_all('fig5')     % Fig.5与Fig.6                  ~4 s
+run_all('fig9')     % Fig.9与Fig.10                ~33 s
+run_all('fig12')    % Fig.12、Fig.13、Fig.14        ~75 s
 run_all('compare')  % 逐点对照表（需先跑fig12）
 ```
 
