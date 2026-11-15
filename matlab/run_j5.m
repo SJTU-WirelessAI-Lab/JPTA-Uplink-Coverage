@@ -1,5 +1,5 @@
 % =======================================================================
-%  run_j5.m -- J19 report generator: side-by-side comparison with the paper
+%  run_j5.m -- this paper report generator: side-by-side comparison with the paper
 %  Reads out/j4_sls.mat (produced by run_j4.m); no simulation here.
 % =======================================================================
 addpath(fullfile(fileparts(mfilename('fullpath')),'core'));
@@ -13,7 +13,7 @@ papThz = [418 1500 1150 900 740 580];
 papMmw = [2500 7000 6000 4800 3800 3000];
 
 %% ------------------------------------------------------------------ THz
-fprintf(fid,'=== J19 Fig. 13 (THz, 2 GHz @ 140 GHz, 32 UEs) vs paper Eq.(2)-(4) ===\n');
+fprintf(fid,'=== Fig. 13 (THz, 2 GHz @ 140 GHz, 32 UEs) vs paper Eq.(2)-(4) ===\n');
 fprintf(fid,'%-14s %9s %9s %9s %9s %9s %8s %8s\n','case','R@10m','R@100m','R@400m', ...
         'R@1000m','cover[m]','paper','sig/paa');
 Rp = @(o,x) local_at(S.Dthz, o.Rmean/1e6, x);
@@ -32,7 +32,7 @@ fprintf(fid,'(paper: 418 -> 1500 m is a 3.59x gain, i.e. larger than its own K^(
 fprintf(fid,' and larger than the 3.26 of its Table 5; our 450 -> 1350 m is 3.00x)\n\n');
 
 %% ---------------------------------------------------------------- mmWave
-fprintf(fid,'=== J19 Fig. 14 (mmWave, 800 MHz @ 28 GHz) ===\n');
+fprintf(fid,'=== Fig. 14 (mmWave, 800 MHz @ 28 GHz) ===\n');
 fprintf(fid,'%-14s %9s %10s %10s %9s %8s %8s\n','case','R@10m','R@1000m','R@3000m','cover[m]','paper','sig/paa');
 Rm = @(o,x) local_at(S.Dmmw, o.Rmean/1e6, x);
 fprintf(fid,'%-14s %9.1f %10.2f %10.3f %9.0f %8d %8.2f\n', names{1}, ...
@@ -45,7 +45,7 @@ end
 fprintf(fid,'\n(paper Fig. 14 x-axis stops at 7000 m; the NSZ=1 curve reaches the right edge)\n\n');
 
 %% ----------------------------------------------------------------- Fig.12
-fprintf(fid,'=== J19 Fig. 12 : best MCS vs distance (PAA, 4 RB) ===\n');
+fprintf(fid,'=== Fig. 12 : best MCS vs distance (PAA, 4 RB) ===\n');
 fprintf(fid,'%8s %6s | %8s %6s\n','dist[m]','ours','dist[m]','ours');
 ks = [10 50 100 150 200 250 300 350 400 450];
 for i = 1:numel(ks)

@@ -78,8 +78,8 @@ run_all('compare')  % 逐点对照表（需先跑fig12）
 两个频段共用一套代码，频段是个开关：
 
 ```matlab
-p = jp_params_j19('thz');    % 140 GHz、2 GHz、SCS 960 kHz
-p = jp_params_j19('mmw');    %  28 GHz、800 MHz、SCS 240 kHz
+p = jp_params('thz');    % 140 GHz、2 GHz、SCS 960 kHz
+p = jp_params('mmw');    %  28 GHz、800 MHz、SCS 240 kHz
 ```
 
 **环境**：MATLAB R2022a及以上，不需要工具箱，已在R2026b验证，结果确定。
@@ -97,16 +97,16 @@ matlab/
   run_j4.m               Fig.12、Fig.13（THz）、Fig.14（mmWave）
   run_j5.m               只出对照表，读out/j4_sls.mat
   core/
-    jp_params_j19.m      Table 4（THz）与Sec. VI-B（mmWave），各一个结构体
+    jp_params.m          Table 4（THz）与Sec. VI-B（mmWave），各一个结构体
     jp_mcs_table.m       Table 3：29档MCS的η、调制阶数、码率
-    jp_j19_mcs.m         同上，另加J19的开销与−8.67 dB锚点
-    jp_j19_lls.m         链路抽象：给定N_TR的BLER、吞吐与E[tx]
+    jp_mcs_select.m      同上，另加本文的开销与−8.67 dB锚点
+    jp_lls.m             链路抽象：给定N_TR的BLER、吞吐与E[tx]
     jp_eesm.m            数值稳定的EESM（式(11)）
-    jp_j19_gain.m        单个模拟波束的逐子载波增益
-    jp_j19_gain_map.m    同上，在一组方向上
+    jp_gain.m            单个模拟波束的逐子载波增益
+    jp_gain_map.m        同上，在一组方向上
   alg/
-    jp_j19_codebook.m    PAA（32个频率平坦波束）与JPTA（彩虹）码本
-    jp_j19_sls.m         系统级仿真：调度、MCS/RB选择、覆盖
+    jp_codebook.m        PAA（32个频率平坦波束）与JPTA（彩虹）码本
+    jp_sls.m             系统级仿真：调度、MCS/RB选择、覆盖
   out/                   图（入库）与.mat缓存（不入库）
 REPORT.zh.md             复现报告
 README.md                英文版说明
@@ -117,7 +117,7 @@ REPORT.md                英文版报告
 
 ## 4 仿真参数
 
-论文Table 4（THz），全部在`jp_params_j19.m`：
+论文Table 4（THz），全部在`jp_params.m`：
 
 | 符号 | 含义 | THz | mmWave |
 |---|---|---|---|
@@ -287,7 +287,7 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 
 | # | 现象 | 根因 |
 |---|---|---|
-| 1 | 32条PAA波束全成水平线，包络恒为23.28 dB | `jp_j19_gain_map`的导向相位漏了载频`f` |
+| 1 | 32条PAA波束全成水平线，包络恒为23.28 dB | `jp_gain_map`的导向相位漏了载频`f` |
 | 2 | Table 5的(h)/(l)偏1–2 dB，覆盖偏13% | HARQ按独立事件连乘，而非累积SNR |
 
 ---
@@ -328,7 +328,7 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 | `JPTA-System-Design` | Mo等，IEEE Asilomar Conf. 2024 | 二维type-1/type-2码本、TTD分辨率、系统级吞吐 |
 
 本文是另外两篇的链路抽象来源：Table 3（逐MCS的η）与式(11)的EESM被两处原样使用，
-两个仓库各自带一份该表（本仓库为`jp_mcs_table.m`，系统篇仓库为`jp_c17_mcs.m`）。
+两个仓库各自带一份该表（本仓库为`jp_mcs_table.m`，系统篇仓库为`jp_mcs.m`）。
 
 ---
 

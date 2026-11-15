@@ -1,8 +1,8 @@
-function p = jp_params_j19(band)
-%JP_PARAMS_J19  Parameters of J19 (AlAmmouri, Mo et al., IEEE Access 2022).
+function p = jp_params(band)
+%JP_PARAMS  Parameters from (AlAmmouri, Mo et al., IEEE Access 2022).
 %
-%   p = jp_params_j19()        THz setup   (Table 4)
-%   p = jp_params_j19('mmw')   mmWave setup (Sec. VI-B, Fig. 14)
+%   p = jp_params()        THz setup   (Table 4)
+%   p = jp_params('mmw')   mmWave setup (Sec. VI-B, Fig. 14)
 %
 %   Every number the paper states is tagged with its source.  The few that
 %   the paper leaves open are tagged [assumed] and listed in REPORT.md §9.7.
@@ -26,7 +26,7 @@ switch p.band
     case 'mmw'
         p.fc  = 28e9;   p.BW = 800e6; p.SCS = 240e3;   p.tag = 'mmWave, 28 GHz';
     otherwise
-        error('jp_params_j19:band','band must be ''thz'' or ''mmw''');
+        error('jp_params:band','band must be ''thz'' or ''mmw''');
 end
 
 % ---- OFDM grid ------------------------------------------------------------

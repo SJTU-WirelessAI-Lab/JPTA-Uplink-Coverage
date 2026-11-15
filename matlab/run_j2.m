@@ -1,11 +1,11 @@
 % =======================================================================
-%  run_j2.m -- J19 Figs. 5-6 : link-level abstraction (BLER & SE vs SNR)
+%  run_j2.m -- Figs. 5-6 : link-level abstraction (BLER & SE vs SNR)
 % =======================================================================
 addpath(fullfile(fileparts(mfilename('fullpath')),'core'));
 addpath(fullfile(fileparts(mfilename('fullpath')),'alg'));
 out = fullfile(fileparts(mfilename('fullpath')),'out');
 if ~exist(out,'dir'), mkdir(out); end
-T   = jp_j19_mcs();
+T   = jp_mcs_select();
 fid = fopen(fullfile(out,'j2_summary.txt'),'w');
 
 ntr = [1 2 4 8 16 32];
@@ -15,20 +15,20 @@ BL = zeros(numel(snr),numel(ntr));
 SE = zeros(numel(snr),numel(ntr));
 for i = 1:numel(ntr)
     for k = 1:numel(snr)
-        [b, s] = jp_j19_lls(T, snr(k), ntr(i));
+        [b, s] = jp_lls(T, snr(k), ntr(i));
         BL(k,i) = b(1);  SE(k,i) = s(1);
     end
 end
 
 %% ------------------------------------------------------------- summary
-fprintf(fid,'=== J19 Figs. 5-6 : MCS 0, HARQ-IR with N_TR transmissions ===\n');
+fprintf(fid,'=== Figs. 5-6 : MCS 0, HARQ-IR with N_TR transmissions ===\n');
 fprintf(fid,'  N_TR   SNR@10%%BLER[dB]   shift[dB]   3log10(N)[dB]   SE_max[bps/Hz]\n');
 th = zeros(1,numel(ntr));
 for i = 1:numel(ntr)
     lo = -70; hi = 20;
     for it = 1:200
         mid = 0.5*(lo+hi);
-        b = jp_j19_lls(T, mid, ntr(i));
+        b = jp_lls(T, mid, ntr(i));
         if b(1) > 0.10, lo = mid; else, hi = mid; end
     end
     th(i) = 0.5*(lo+hi);
@@ -36,7 +36,7 @@ for i = 1:numel(ntr)
             10*log10(ntr(i)), max(SE(:,i)));
 end
 fprintf(fid,'\npaper: 3 dB per doubling; SE ceiling 0.044 bps/Hz (2*0.029*(1-%.3f) = %.4f)\n', T.oh, T.se(1));
-fprintf(fid,'CQI-interpolated MCS-0 threshold before anchoring: %.2f dB (J19 Tab. 5h: %.2f dB)\n\n', ...
+fprintf(fid,'CQI-interpolated MCS-0 threshold before anchoring: %.2f dB (Tab. 5h: %.2f dB)\n\n', ...
         T.snrTh0(1), T.anchor);
 
 % full threshold table (MCS x N_TR) is what the SLS uses internally
@@ -48,7 +48,7 @@ for im = 1:T.nMcs
     for j = 1:3
         for it = 1:200
             mid = 0.5*(lo(j)+hi(j));
-            b = jp_j19_lls(T, mid, nt(j));
+            b = jp_lls(T, mid, nt(j));
             if b(im) > 0.10, lo(j) = mid; else, hi(j) = mid; end
         end
     end

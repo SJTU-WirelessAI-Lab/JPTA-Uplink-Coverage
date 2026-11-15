@@ -1,7 +1,7 @@
 function effDb = jp_eesm(lin, eta)
 %JP_EESM  Numerically stable exponential effective SNR mapping.
 %
-%   eff = -eta*log(mean(exp(-lin/eta)))            (J19 eq. (11))
+%   eff = -eta*log(mean(exp(-lin/eta)))            (eq. (11))
 %
 %   Evaluated directly this underflows as soon as the SNR exceeds a few
 %   hundred in linear scale (exp(-lin/eta) becomes exactly 0 for every

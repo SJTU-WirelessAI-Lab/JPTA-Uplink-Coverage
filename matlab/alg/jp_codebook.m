@@ -1,8 +1,8 @@
-function cb = jp_j19_codebook(p, kind, NSZ)
-%JP_J19_CODEBOOK  Analog beam codebooks of J19.
+function cb = jp_codebook(p, kind, NSZ)
+%JP_CODEBOOK  Analog beam codebooks of this paper.
 %
-%   cb = jp_j19_codebook(p, 'paa')     32 frequency-flat beams over the sector
-%   cb = jp_j19_codebook(p, 'jpta', N) N spatial zones, each covered by one
+%   cb = jp_codebook(p, 'paa')     32 frequency-flat beams over the sector
+%   cb = jp_codebook(p, 'jpta', N) N spatial zones, each covered by one
 %                                      frequency-dependent (rainbow) beam
 %
 %   PAA (Fig. 9): beams uniformly spaced in u = sin(theta) over +-sin(60deg).
@@ -22,7 +22,7 @@ function cb = jp_j19_codebook(p, kind, NSZ)
 %   along the array.  Imposing u(fLo) = uLo, u(fHi) = uHi fixes both unknowns
 %   in closed form (no search).  The ramp is centred, so the delay unit only
 %   has to supply +-(M-1)/2*delta, which is exactly the convention that
-%   reproduces J19 Table 6 (see run_j1).
+%   reproduces Table 6 (see run_j1).
 
 u60 = sind(p.sector/2);
 M   = p.Ndu;
@@ -41,7 +41,7 @@ if strcmpi(kind,'paa')
     return
 end
 
-if nargin < 3, error('jp_j19_codebook:NSZ','NSZ required for JPTA'); end
+if nargin < 3, error('jp_codebook:NSZ','NSZ required for JPTA'); end
 ue  = linspace(-u60, u60, NSZ+1);
 fLo = p.f(1);  fHi = p.f(end);
 cb.type = 'jpta'; cb.nb = NSZ; cb.NSZ = NSZ; cb.uEdge = ue;

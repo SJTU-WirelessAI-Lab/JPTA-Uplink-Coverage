@@ -1,7 +1,7 @@
-function [bler, se] = jp_j19_lls(T, snrDb, ntr)
-%JP_J19_LLS  Link-level abstraction of J19 Sec. V-A (HARQ-IR included).
+function [bler, se] = jp_lls(T, snrDb, ntr)
+%JP_LLS  Link-level abstraction , Sec. V-A (HARQ-IR included).
 %
-%   [bler, se] = jp_j19_lls(T, snrDb, ntr)
+%   [bler, se] = jp_lls(T, snrDb, ntr)
 %
 %   snrDb : per-subcarrier effective SNR of ONE transmission [dB].  May be a
 %           column vector of length nMcs (one value per MCS); the EESM output
@@ -20,13 +20,13 @@ function [bler, se] = jp_j19_lls(T, snrDb, ntr)
 %       E[tx]   = 1 + sum_{n=1..N-1} eps(n*g)     <- because E[tx]=sum P(tx>n)
 %       SE(N)   = SE_ideal * (1 - BLER) / E[tx]
 %
-%   The three statements J19 makes about Figs. 5-6 follow directly: 3 dB per
+%   The three statements this paper makes about Figs. 5-6 follow directly: 3 dB per
 %   doubling of N_TR (Fig. 5 is a set of shifted copies), SE(N=32) best and
 %   converging to SE(N=16,8,...) as the SNR grows, and the 0.044 bps/Hz
 %   ceiling of Fig. 6.  Note that the *product* model (independent attempts)
 %   is wrong here: it would give 3.3-3.4 dB per doubling instead of 3.0.
 %
-%   J19 Tab. 5(h) validates the choice: -8.67 / -14.59 / -24.07 dB for
+%   Tab. 5(h) validates the choice: -8.67 / -14.59 / -24.07 dB for
 %   N_TR = 1 / 4 / 32, i.e. -8.67 - 3.0*log2(N_TR) to within 0.4 dB.
 
 th  = T.snrTh(:);                       % nMcs x 1

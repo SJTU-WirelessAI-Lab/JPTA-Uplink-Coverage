@@ -1,4 +1,4 @@
-=== J19 Fig. 9 : 32-beam PAA codebook at fc ===
+=== Fig. 9 : 32-beam PAA codebook at fc ===
 beam spacing in u        : 0.0559   (3 dB width 0.886/Nh = 0.0554)
 envelope over +-60 deg   : max 24.00 dB, min 23.28 dB   (paper 24 / 23.3)
 predicted crossover dip  : -3.06 dB

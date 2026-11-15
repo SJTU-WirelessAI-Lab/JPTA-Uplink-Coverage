@@ -1,10 +1,10 @@
-function G = jp_j19_gain_map(p, tau, phi, uVec, fidx)
-%JP_J19_GAIN_MAP  Gain [dB] of one analog beam over a grid of directions.
+function G = jp_gain_map(p, tau, phi, uVec, fidx)
+%JP_GAIN_MAP  Gain [dB] of one analog beam over a grid of directions.
 %
-%   G = jp_j19_gain_map(p, tau, phi, uVec)        -> numel(f) x numel(uVec)
-%   G = jp_j19_gain_map(p, tau, phi, uVec, fidx)  -> 1        x numel(uVec)
+%   G = jp_gain_map(p, tau, phi, uVec)        -> numel(f) x numel(uVec)
+%   G = jp_gain_map(p, tau, phi, uVec, fidx)  -> 1        x numel(uVec)
 %
-%   Same model as jp_j19_gain, evaluated for many angles (and sub-carriers)
+%   Same model as jp_gain, evaluated for many angles (and sub-carriers)
 %   at once:
 %
 %       AF(f,u) = sum_m exp(j(phi_m + 2*pi*f*tau_m + 2*pi*f*d*m*u/c))

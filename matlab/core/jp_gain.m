@@ -1,7 +1,7 @@
-function g = jp_j19_gain(p, tau, phi, u, fidx)
-%JP_J19_GAIN  Array gain [dB] of one analog beam, per subcarrier.
+function g = jp_gain(p, tau, phi, u, fidx)
+%JP_GAIN  Array gain [dB] of one analog beam, per subcarrier.
 %
-%   g = jp_j19_gain(p, tau, phi, u, fidx) with
+%   g = jp_gain(p, tau, phi, u, fidx) with
 %       tau, phi : M x 1 delay [s] and PS phase [rad] per sub-array
 %       u        : sin(theta) of the observation direction
 %       fidx     : subcarrier indices (default: all)

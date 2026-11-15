@@ -1,8 +1,8 @@
-function out = jp_j19_sls(p, T, kind, NSZ, D, thDeg)
-%JP_J19_SLS  System-level simulator of J19 Sec. V-B.
+function out = jp_sls(p, T, kind, NSZ, D, thDeg)
+%JP_SLS  System-level simulator , Sec. V-B.
 %
-%   out = jp_j19_sls(p, T, 'paa',  [], D, thDeg)
-%   out = jp_j19_sls(p, T, 'jpta', N,  D, thDeg)
+%   out = jp_sls(p, T, 'paa',  [], D, thDeg)
+%   out = jp_sls(p, T, 'jpta', N,  D, thDeg)
 %
 %   Per UE and per distance:
 %     1. serving beam = the codebook beam with the largest gain (Sec. V-B)
@@ -21,13 +21,13 @@ function out = jp_j19_sls(p, T, kind, NSZ, D, thDeg)
 %   (the paper's rule for equalising the message delay, Sec. V-B).
 
 if strcmpi(kind,'paa')
-    cb    = jp_j19_codebook(p,'paa');
+    cb    = jp_codebook(p,'paa');
     duty  = 1/p.NUE;
     K     = 1;
     bCap  = p.Nrb;                     % the UE owns the whole band in its slot
     bName = 'PAA';
 else
-    cb    = jp_j19_codebook(p,'jpta',NSZ);
+    cb    = jp_codebook(p,'jpta',NSZ);
     duty  = 1/NSZ;
     K     = ceil(p.NUE/NSZ);
     bCap  = floor(p.Nrb*NSZ/p.NUE);    % W*NSZ/N_UE, the fair share
@@ -45,10 +45,10 @@ for iu = 1:nU
     u  = sind(thDeg(iu));
     gb = -inf; ib = 1;
     for b = 1:cb.nb
-        gg = jp_j19_gain(p, cb.b(b).tau, cb.b(b).phi, u);
+        gg = jp_gain(p, cb.b(b).tau, cb.b(b).phi, u);
         if max(gg) > gb, gb = max(gg); ib = b; end
     end
-    g   = jp_j19_gain(p, cb.b(ib).tau, cb.b(ib).phi, u);
+    g   = jp_gain(p, cb.b(ib).tau, cb.b(ib).phi, u);
     ok  = find(g >= max(g) - p.gEdge);
     [~,ord] = sort(g(ok),'descend');
     idx = ok(ord);
@@ -82,7 +82,7 @@ for id = 1:numel(D)
         for ic = 1:numel(cand)
             if isnan(E(ic,1)), continue; end
             eff = E(ic,:).' + Gh(id);
-            [bler, se] = jp_j19_lls(T, eff, K);     % vectorised over MCS
+            [bler, se] = jp_lls(T, eff, K);     % vectorised over MCS
             % lls expects a scalar SNR: fall back to a loop when eff varies
             gain = duty*nsc{iu}(ic)*p.SCS * se .* (bler <= p.blerTgt);
             [v, im] = max(gain);

@@ -1,5 +1,5 @@
 function T = jp_mcs_table()
-%JP_MCS_TABLE  MCS table 3 of J19 with the per-MCS EESM parameter eta.
+%JP_MCS_TABLE  MCS table 3 of this paper with the per-MCS EESM parameter eta.
 %
 %   eta, modulation order and coding rate are transcribed from Table 3 of
 %   the paper.  The same 29 rows are used by the companion reproduction of
@@ -8,7 +8,7 @@ function T = jp_mcs_table()
 %   The 10%-BLER SNR thresholds are NOT tabulated in the paper.  They are
 %   obtained by interpolating the standard 3GPP CQI->SNR operating points
 %   (below) in the spectral-efficiency domain.  This is the one modelling
-%   assumption of the link abstraction; J19's own anchor (-8.67 dB for
+%   assumption of the link abstraction; this paper's own anchor (-8.67 dB for
 %   MCS 0) lands 0.33 dB away from it, see REPORT.md.
 
 % mcs  eta    bits rate   (bits = modulation order: QPSK 2, 16QAM 4, 64QAM 6)

@@ -1,25 +1,25 @@
 % =======================================================================
-%  run_j3.m -- J19 Figs. 9-10 : PAA and JPTA codebooks
+%  run_j3.m -- Figs. 9-10 : PAA and JPTA codebooks
 % =======================================================================
 addpath(fullfile(fileparts(mfilename('fullpath')),'core'));
 addpath(fullfile(fileparts(mfilename('fullpath')),'alg'));
 out = fullfile(fileparts(mfilename('fullpath')),'out');
 if ~exist(out,'dir'), mkdir(out); end
-p   = jp_params_j19('thz');
+p   = jp_params('thz');
 fid = fopen(fullfile(out,'j3_summary.txt'),'w');
 imid = round(p.Nsc/2);
 
 %% ------------------------------------------------------------ PAA (Fig. 9)
-cbP = jp_j19_codebook(p,'paa');
+cbP = jp_codebook(p,'paa');
 th  = -60:0.02:60;
 G   = zeros(numel(th), cbP.nb);
 for i = 1:cbP.nb
-    G(:,i) = jp_j19_gain_map(p, cbP.b(i).tau, cbP.b(i).phi, sind(th), imid).';
+    G(:,i) = jp_gain_map(p, cbP.b(i).tau, cbP.b(i).phi, sind(th), imid).';
 end
 env  = max(G,[],2);
 du   = (sind(60)-sind(-60))/(cbP.nb-1);
 dip  = 20*log10(abs(sin(pi*p.NhB*du/2)/(p.NhB*sin(pi*du/2))));
-fprintf(fid,'=== J19 Fig. 9 : 32-beam PAA codebook at fc ===\n');
+fprintf(fid,'=== Fig. 9 : 32-beam PAA codebook at fc ===\n');
 fprintf(fid,'beam spacing in u        : %.4f   (3 dB width 0.886/Nh = %.4f)\n', du, 0.886/p.NhB);
 fprintf(fid,'envelope over +-60 deg   : max %.2f dB, min %.2f dB   (paper 24 / 23.3)\n', max(env), min(env));
 fprintf(fid,'predicted crossover dip  : %.2f dB\n\n', dip);
@@ -34,10 +34,10 @@ print(fullfile(out,'j3_fig9_paa.png'),'-dpng','-r160');
 
 %% ----------------------------------------------------------- JPTA (Fig. 10)
 thG  = -60:0.25:60;
-cb2  = jp_j19_codebook(p,'jpta',2);
+cb2  = jp_codebook(p,'jpta',2);
 figure('Position',[80 80 950 350],'Color','w');
 for i = 1:2
-    Gm = jp_j19_gain_map(p, cb2.b(i).tau, cb2.b(i).phi, sind(thG));
+    Gm = jp_gain_map(p, cb2.b(i).tau, cb2.b(i).phi, sind(thG));
     subplot(1,2,i);
     imagesc(thG, p.foff/1e9, Gm); axis xy; caxis([12 p.Gbs]); colorbar;
     xlabel('Angle (deg)'); ylabel('Frequency offset (GHz)');
@@ -48,10 +48,10 @@ print(fullfile(out,'j3_fig10_nsz2.png'),'-dpng','-r170');
 figure('Position',[60 60 1000 660],'Color','w');
 for k = 1:4
     NS = p.NSZ(k);
-    cb = jp_j19_codebook(p,'jpta',NS);
+    cb = jp_codebook(p,'jpta',NS);
     Gm = -inf(numel(p.foff), numel(thG));
     for i = 1:NS
-        Gm = max(Gm, jp_j19_gain_map(p, cb.b(i).tau, cb.b(i).phi, sind(thG)));
+        Gm = max(Gm, jp_gain_map(p, cb.b(i).tau, cb.b(i).phi, sind(thG)));
     end
     subplot(2,2,k);
     imagesc(thG, p.foff/1e9, Gm); axis xy; caxis([12 p.Gbs]); colorbar;
@@ -66,16 +66,16 @@ fprintf(fid,'%5s %16s %16s %16s %8s\n','NSZ','bundle@centre','bundle@0.9 zone','
 bun = zeros(1,5); bunE = zeros(1,5); gpk = zeros(1,5);
 for k = 1:5
     NS = p.NSZ(k);
-    cb = jp_j19_codebook(p,'jpta',NS);
+    cb = jp_codebook(p,'jpta',NS);
     for j = 1:2
         uu = cb.b(1).uLo + (0.5 + 0.4*(j-1))*(cb.b(1).uHi-cb.b(1).uLo);
-        g  = jp_j19_gain_map(p, cb.b(1).tau, cb.b(1).phi, uu).';
+        g  = jp_gain_map(p, cb.b(1).tau, cb.b(1).phi, uu).';
         nb = sum(g >= max(g)-p.gEdge);
         if j == 1, bun(k) = nb*p.SCS/1e6; else, bunE(k) = nb*p.SCS/1e6; end
     end
     gg = -inf;
     for i = 1:NS
-        Gi = jp_j19_gain_map(p, cb.b(i).tau, cb.b(i).phi, sind(0:0.05:60));
+        Gi = jp_gain_map(p, cb.b(i).tau, cb.b(i).phi, sind(0:0.05:60));
         gg = max(gg, max(Gi(:)));
     end
     gpk(k) = gg;

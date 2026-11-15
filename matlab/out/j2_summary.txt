@@ -1,4 +1,4 @@
-=== J19 Figs. 5-6 : MCS 0, HARQ-IR with N_TR transmissions ===
+=== Figs. 5-6 : MCS 0, HARQ-IR with N_TR transmissions ===
   N_TR   SNR@10%BLER[dB]   shift[dB]   3log10(N)[dB]   SE_max[bps/Hz]
      1          -8.67         0.00           0.00         0.0440
      2         -11.68        -3.01           3.01         0.0440
@@ -8,7 +8,7 @@
     32         -23.72       -15.05          15.05         0.0440
 
 paper: 3 dB per doubling; SE ceiling 0.044 bps/Hz (2*0.029*(1-0.241) = 0.0440)
-CQI-interpolated MCS-0 threshold before anchoring: -9.00 dB (J19 Tab. 5h: -8.67 dB)
+CQI-interpolated MCS-0 threshold before anchoring: -9.00 dB (Tab. 5h: -8.67 dB)
 
 10%-BLER SNR for every MCS (N_TR = 1 / 4 / 32):
  MCS   N_TR=1   N_TR=4  N_TR=32

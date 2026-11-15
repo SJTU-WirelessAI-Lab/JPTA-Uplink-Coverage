@@ -1,4 +1,4 @@
-=== J19 Fig. 13 (THz, 2 GHz @ 140 GHz, 32 UEs) vs paper Eq.(2)-(4) ===
+=== Fig. 13 (THz, 2 GHz @ 140 GHz, 32 UEs) vs paper Eq.(2)-(4) ===
 case               R@10m    R@100m    R@400m   R@1000m  cover[m]    paper  sig/paa
 PAA                213.7      7.39     0.102     0.000       450      418     1.00
 JPTA N_{SZ}=1      197.7     84.75     4.384     0.355      1350     1500     3.00
@@ -11,7 +11,7 @@ K^(1/3) predicted coverage gain: 1.00 3.17 2.52 2.00 1.59 1.26
 (paper: 418 -> 1500 m is a 3.59x gain, i.e. larger than its own K^(1/b)=3.17
  and larger than the 3.26 of its Table 5; our 450 -> 1350 m is 3.00x)
 
-=== J19 Fig. 14 (mmWave, 800 MHz @ 28 GHz) ===
+=== Fig. 14 (mmWave, 800 MHz @ 28 GHz) ===
 case               R@10m    R@1000m    R@3000m  cover[m]    paper  sig/paa
 PAA                 85.6       0.20      0.000      2000     2500     1.00
 JPTA N_{SZ}=1       79.1       5.51      0.326      6500     7000     3.25
@@ -22,7 +22,7 @@ JPTA N_{SZ}=16      85.3       0.43      0.000      2600     3000     1.30
 
 (paper Fig. 14 x-axis stops at 7000 m; the NSZ=1 curve reaches the right edge)
 
-=== J19 Fig. 12 : best MCS vs distance (PAA, 4 RB) ===
+=== Fig. 12 : best MCS vs distance (PAA, 4 RB) ===
  dist[m]   ours |  dist[m]   ours
       10   28.0 |       10   28.0
       50   28.0 |       50   28.0

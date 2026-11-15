@@ -91,8 +91,8 @@ run `run_all('fig12')` first (or `run_all`) if it is missing.
 Both bands use the same code; the band is a switch:
 
 ```matlab
-p = jp_params_j19('thz');    % 140 GHz, 2 GHz, SCS 960 kHz
-p = jp_params_j19('mmw');    %  28 GHz, 800 MHz, SCS 240 kHz
+p = jp_params('thz');    % 140 GHz, 2 GHz, SCS 960 kHz
+p = jp_params('mmw');    %  28 GHz, 800 MHz, SCS 240 kHz
 ```
 
 **Environment**: MATLAB R2022a or later, no toolbox required. Verified on R2026b. Deterministic.
@@ -110,16 +110,16 @@ matlab/
   run_j4.m               Fig. 12, Fig. 13 (THz) and Fig. 14 (mmWave)
   run_j5.m               comparison table only, reads out/j4_sls.mat
   core/
-    jp_params_j19.m      Table 4 (THz) and Sec. VI-B (mmWave), one struct each
+    jp_params.m          Table 4 (THz) and Sec. VI-B (mmWave), one struct each
     jp_mcs_table.m       Table 3: 29 MCS rows with eta, modulation, coding rate
-    jp_j19_mcs.m         the same table plus J19's overhead and the -8.67 dB anchor
-    jp_j19_lls.m         link abstraction: BLER, throughput and E[tx] for N_TR
+    jp_mcs_select.m      the same table plus this paper's overhead and the -8.67 dB anchor
+    jp_lls.m             link abstraction: BLER, throughput and E[tx] for N_TR
     jp_eesm.m            numerically stable EESM (eq. 11)
-    jp_j19_gain.m        gain of one analog beam, per subcarrier
-    jp_j19_gain_map.m    the same over a grid of directions
+    jp_gain.m            gain of one analog beam, per subcarrier
+    jp_gain_map.m        the same over a grid of directions
   alg/
-    jp_j19_codebook.m    PAA (32 flat beams) and JPTA (rainbow) codebooks
-    jp_j19_sls.m         system-level simulator: scheduling, MCS/RB choice, coverage
+    jp_codebook.m        PAA (32 flat beams) and JPTA (rainbow) codebooks
+    jp_sls.m             system-level simulator: scheduling, MCS/RB choice, coverage
   out/                   figures (tracked) and .mat caches (ignored)
 REPORT.md                reproduction report
 README.zh.md             Chinese version of this file
@@ -130,7 +130,7 @@ REPORT.zh.md             Chinese version of the report
 
 ## 4. Simulation parameters
 
-Table 4 of the paper (THz), all in `jp_params_j19.m`:
+Table 4 of the paper (THz), all in `jp_params.m`:
 
 | Symbol | Meaning | THz | mmWave |
 |---|---|---|---|
@@ -321,7 +321,7 @@ Two bugs that were fixed (both listed in REPORT §5):
 
 | # | Symptom | Root cause |
 |---|---|---|
-| 1 | all 32 PAA curves horizontal, envelope a constant 23.28 dB | the steering phase in `jp_j19_gain_map` omitted the carrier `f` |
+| 1 | all 32 PAA curves horizontal, envelope a constant 23.28 dB | the steering phase in `jp_gain_map` omitted the carrier `f` |
 | 2 | Table 5 rows (h)/(l) off by 1–2 dB, coverage off by 13% | HARQ modelled as independent events instead of cumulative SNR |
 
 ---
@@ -368,7 +368,7 @@ Two bugs that were fixed (both listed in REPORT §5):
 
 This is the paper the other two borrow their link abstraction from: Table 3 (η per MCS) and the
 EESM formula of eq. (11) are used verbatim by both, and both repositories ship this table as
-their own file (`jp_mcs_table.m` there, `jp_c17_mcs.m` in the system-design repository).
+their own file (`jp_mcs_table.m` there, `jp_mcs.m` in the system-design repository).
 
 ---
 

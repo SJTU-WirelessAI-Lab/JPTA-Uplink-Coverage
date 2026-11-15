@@ -261,7 +261,7 @@ uncertainty.
 
 | # | Symptom | Root cause |
 |---|---|---|
-| 1 | all 32 PAA curves horizontal, envelope a constant 23.28 dB | the steering phase in `jp_j19_gain_map` used `2π(d/c)mu` instead of `2πf(d/c)mu`, so the pattern lost all angle and frequency dependence |
+| 1 | all 32 PAA curves horizontal, envelope a constant 23.28 dB | the steering phase in `jp_gain_map` used `2π(d/c)mu` instead of `2πf(d/c)mu`, so the pattern lost all angle and frequency dependence |
 | 2 | Table 5 rows (h)/(l) off by 1–2 dB, coverage off by 13% | HARQ as independent events (3.4 dB per doubling) instead of cumulative SNR |
 | 3 | EESM returning `Inf` and every throughput zero | `−η log(mean(exp(−γ/η)))` underflows; factor out the minimum |
 | 4 | sum of allocated bandwidths exceeding the system bandwidth | the 3 dB band selection overlaps 2:1 between neighbours (G7) |
@@ -281,4 +281,4 @@ uncertainty.
 | retransmissions | `N_TR = K = ⌈N_UE/N_SZ⌉` | — | fixed `N_TR` |
 
 This is the paper the other two borrow their link abstraction from: Table 3 (η per MCS) and the
-EESM of eq. (11) are used verbatim in both, as `jp_mcs_table.m` and `jp_c17_mcs.m` respectively.
+EESM of eq. (11) are used verbatim in both, as `jp_mcs_table.m` and `jp_mcs.m` respectively.

@@ -234,7 +234,7 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 
 | # | 现象 | 根因 |
 |---|---|---|
-| 1 | 32条PAA曲线全水平，包络恒为23.28 dB | `jp_j19_gain_map`的导向相位写成`2π(d/c)mu`而非`2πf(d/c)mu`，方向图失去角度与频率依赖 |
+| 1 | 32条PAA曲线全水平，包络恒为23.28 dB | `jp_gain_map`的导向相位写成`2π(d/c)mu`而非`2πf(d/c)mu`，方向图失去角度与频率依赖 |
 | 2 | Table 5的(h)/(l)偏1–2 dB，覆盖偏13% | HARQ按独立事件连乘（3.4 dB/倍增）而非累积SNR |
 | 3 | EESM返回`Inf`、吞吐全为0 | `−η log(mean(exp(−γ/η)))`下溢；提出`min`项 |
 | 4 | 分配带宽之和超过系统带宽 | 3 dB选带在相邻用户间2:1重叠（G7） |
@@ -254,4 +254,4 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 | 重传 | `N_TR=K=⌈N_UE/N_SZ⌉` | — | 固定`N_TR` |
 
 本文是另外两篇的链路抽象来源：Table 3（逐MCS的η）与式(11)的EESM被两处原样使用，
-分别以`jp_mcs_table.m`与`jp_c17_mcs.m`的形式出现。
+分别以`jp_mcs_table.m`与`jp_mcs.m`的形式出现。
