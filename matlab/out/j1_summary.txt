@@ -1,0 +1,47 @@
+=== J19 Fig. 4 : coverage extension vs transmission opportunity K ===
+     radius K^(1/b)          area K^(2/b)
+  K    b=2    b=3    b=4     b=2     b=3     b=4
+  1  1.000  1.000  1.000    1.00    1.00    1.00
+  4  2.000  1.587  1.414    4.00    2.52    2.00
+  8  2.828  2.000  1.682    8.00    4.00    2.83
+ 16  4.000  2.520  2.000   16.00    6.35    4.00
+ 32  5.657  3.175  2.378   32.00   10.08    5.66
+
+paper (Sec. IV, K=32, beta=3): radius 32^(1/3)=3.1748, area 32^(2/3)=10.0794, BS density -> 9.9%
+
+=== J19 Table 5 : coverage through link budget (b = 3) ===
+quantity                                  PAA   JPTA NSZ=8   JPTA NSZ=1
+(a) UE TX power [dBm]                   18.00        18.00        18.00
+(b) UE TX gain [dB]                     15.00        15.00        15.00
+(c) UE EIRP [dBm]                       33.00        33.00        33.00
+(d) noise density [dBm/Hz]            -174.00      -174.00      -174.00
+(e) channel bandwidth [MHz]             46.08        46.08        46.08
+(f) effective noise power [dBm]        -97.36       -97.36       -97.36
+(g) repetitions K                        1.00         4.00        32.00
+(h) required SNR (LLS) [dB]             -8.67       -14.69       -23.72
+    (paper)                             -8.67       -14.59       -24.07
+(i) receiver sensitivity [dBm]        -106.03      -112.06      -121.09
+(j) RX gain [dB]                        24.00        24.00        24.00
+(k) RX noise figure [dB]                 8.00         8.00         8.00
+(l) HW link budget margin [dB]         155.03       161.06       170.09
+    (paper)                            155.04       160.96       170.44
+
+coverage distance [m]                   452          718         1436   (paper 454 / 715 / 1481)
+distance gain vs PAA                              1.59         3.17   (paper 1.59 / 3.26)
+K^(1/3) prediction                                1.59         3.17
+
+LLS check: required SNR - (MCS0, N_TR=1) - 10log10(K) = [0 -12.04 -30.1] dB
+           (positive = the paper's small extra HARQ-IR coding gain)
+
+=== J19 Table 6 : required maximum delay ===
+   NSZ ours ramp[ns] ours centred[ns]     paper[ns]      c/p | ours mmW[ns]      c/p
+     1         6.499         3.250          3.52     0.92 |       16.244     0.92
+     2         3.226         1.613          1.67     0.97 |        8.006     0.95
+     4         1.590         0.795          0.71     1.12 |        3.887     1.08
+     8         0.772         0.386          0.32     1.21 |        1.828     1.06
+    16         0.363         0.181          0.16     1.13 |        0.798     0.87
+
+(a full ramp tau_m = m*delta, m = 0..15, needs (M-1)*delta; a centred ramp
+ tau_m = (m-(M-1)/2)*delta needs only (M-1)*delta/2 and is what a differential
+ TTD pair naturally implements.  NSZ=1: 3.25 vs 3.52 ns (8%), NSZ=2: 1.64 vs 1.67 (2%).)
+(full-aperture differential delay at 60 deg, 16 sub-arrays x lambda/2: 46.394 ps)

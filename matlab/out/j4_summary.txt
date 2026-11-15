@@ -1,0 +1,26 @@
+=== J19 Fig. 13 : THz, 32 UEs, W=2 GHz, fc=140 GHz ===
+UE angles (deg): [-58.1 -54.4 -50.6 -46.9 -43.1 -39.4 -35.6 -31.9 -28.1 -24.4 -20.6 -16.9 -13.1 -9.4 -5.6 -1.9 1.9 5.6 9.4 13.1 16.9 20.6 24.4 28.1 31.9 35.6 39.4 43.1 46.9 50.6 54.4 58.1]
+
+PAA              K= 1 duty=0.0312  coverage   450 m  R(100m)=    7.39  R(400m)=   0.102 Mbps
+JPTA N_{SZ}=1    K=32 duty=1.0000  coverage  1350 m  R(100m)=   84.75  R(400m)=   4.384 Mbps
+JPTA N_{SZ}=2    K=16 duty=0.5000  coverage  1100 m  R(100m)=   60.00  R(400m)=   2.436 Mbps
+JPTA N_{SZ}=4    K= 8 duty=0.2500  coverage   900 m  R(100m)=   39.01  R(400m)=   1.304 Mbps
+JPTA N_{SZ}=8    K= 4 duty=0.1250  coverage   700 m  R(100m)=   23.40  R(400m)=   0.632 Mbps
+JPTA N_{SZ}=16   K= 2 duty=0.0625  coverage   550 m  R(100m)=   13.51  R(400m)=   0.272 Mbps
+
+paper: PAA 418 m, JPTA NSZ=1 1500 m ; centre throughput 225 Mbps per UE ; Rmin = 57 kbps
+       ratio JPTA/PAA at 1500 m: NSZ=1:0x  NSZ=2:0x  NSZ=4:0x  NSZ=8:0x  NSZ=16:0x  
+
+=== J19 Fig. 12 : best MCS vs distance (PAA, 4 RB = 46 MHz) ===
+MCS at  10 m = 28.0  |  60 m = 26.0  | 100 m = 19.9  | 200 m = 10.8  | 300 m = 6.0  | 400 m = 2.0
+(paper: starts at 28 for <60 m, reaches 0 beyond ~400 m)
+
+=== J19 Fig. 14 : mmWave, 800 MHz @ 28 GHz, SCS 240 kHz ===
+PAA              K= 1  coverage  2000 m   R(1000m)=    0.20 Mbps
+JPTA N_{SZ}=1    K=32  coverage  6500 m   R(1000m)=    5.51 Mbps
+JPTA N_{SZ}=2    K=16  coverage  5200 m   R(1000m)=    3.12 Mbps
+JPTA N_{SZ}=4    K= 8  coverage  4100 m   R(1000m)=    1.75 Mbps
+JPTA N_{SZ}=8    K= 4  coverage  3300 m   R(1000m)=    0.94 Mbps
+JPTA N_{SZ}=16   K= 2  coverage  2600 m   R(1000m)=    0.43 Mbps
+(paper: curves extend to about 7000 m for NSZ=1 and about 2500 m for PAA)
+

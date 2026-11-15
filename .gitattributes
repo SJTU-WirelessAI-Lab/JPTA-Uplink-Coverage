@@ -1,0 +1,11 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Matlab sources are plain text
+*.m   text
+*.md  text
+
+# Binary results and paper
+*.pdf binary
+*.png binary
+*.mat binary

@@ -1,0 +1,43 @@
+=== J19 Fig. 13 (THz, 2 GHz @ 140 GHz, 32 UEs) vs paper Eq.(2)-(4) ===
+case               R@10m    R@100m    R@400m   R@1000m  cover[m]    paper  sig/paa
+PAA                213.7      7.39     0.102     0.000       450      418     1.00
+JPTA N_{SZ}=1      197.7     84.75     4.384     0.355      1350     1500     3.00
+JPTA N_{SZ}=2      197.7     60.00     2.436     0.158      1100     1150     2.44
+JPTA N_{SZ}=4      207.6     39.01     1.304     0.000       900      900     2.00
+JPTA N_{SZ}=8      212.5     23.40     0.632     0.000       700      740     1.56
+JPTA N_{SZ}=16     212.5     13.51     0.272     0.000       550      580     1.22
+
+K^(1/3) predicted coverage gain: 1.00 3.17 2.52 2.00 1.59 1.26 
+(paper: 418 -> 1500 m is a 3.59x gain, i.e. larger than its own K^(1/b)=3.17
+ and larger than the 3.26 of its Table 5; our 450 -> 1350 m is 3.00x)
+
+=== J19 Fig. 14 (mmWave, 800 MHz @ 28 GHz) ===
+case               R@10m    R@1000m    R@3000m  cover[m]    paper  sig/paa
+PAA                 85.6       0.20      0.000      2000     2500     1.00
+JPTA N_{SZ}=1       79.1       5.51      0.326      6500     7000     3.25
+JPTA N_{SZ}=2       84.0       3.12      0.170      5200     6000     2.60
+JPTA N_{SZ}=4       84.0       1.75      0.083      4100     4800     2.05
+JPTA N_{SZ}=8       85.3       0.94      0.033      3300     3800     1.65
+JPTA N_{SZ}=16      85.3       0.43      0.000      2600     3000     1.30
+
+(paper Fig. 14 x-axis stops at 7000 m; the NSZ=1 curve reaches the right edge)
+
+=== J19 Fig. 12 : best MCS vs distance (PAA, 4 RB) ===
+ dist[m]   ours |  dist[m]   ours
+      10   28.0 |       10   28.0
+      50   28.0 |       50   28.0
+     100   19.9 |      100   19.9
+     150   14.8 |      150   14.8
+     200   10.8 |      200   10.8
+     250    8.0 |      250    8.0
+     300    6.0 |      300    6.0
+     350    4.4 |      350    4.4
+     400    2.0 |      400    2.0
+     450    0.0 |      450    0.0
+paper: 28 for <60 m, monotone decrease, 0 beyond ~400 m
+
+=== cross-checks ===
+THz  : PAA 450 m vs link budget 452 m (paper 418 / 454)
+       NSZ=1 1350 m vs link budget 1436 m (paper 1500 / 1481)
+mmW  : PAA 2000 m vs link budget 2200 m ; NSZ=1 6500 m vs 7000 m
+K^(1/3) with beta=3 predicts 3.17x; measured THz 3.00x, mmWave 3.25x

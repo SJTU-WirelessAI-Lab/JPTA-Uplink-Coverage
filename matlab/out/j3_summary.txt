@@ -1,0 +1,19 @@
+=== J19 Fig. 9 : 32-beam PAA codebook at fc ===
+beam spacing in u        : 0.0559   (3 dB width 0.886/Nh = 0.0554)
+envelope over +-60 deg   : max 24.00 dB, min 23.28 dB   (paper 24 / 23.3)
+predicted crossover dip  : -3.06 dB
+
+=== JPTA 3 dB bundle per UE vs the fair share W*NSZ/N_UE ===
+  NSZ    bundle@centre  bundle@0.9 zone        W*NSZ/NUE    ratio
+    1            127.7            128.6             62.5     2.04
+    2            255.4            256.3            125.0     2.04
+    4            510.7            459.8            250.0     2.04
+    8           1022.4            717.1            500.0     2.04
+   16           1999.7           1230.7           1000.0     2.00
+
+(ratio ~2 means the +/-3 dB band of one UE is about twice its fair share, so
+ neighbouring allocations overlap 2:1 -- the SLS therefore caps B at the fair
+ share W*NSZ/N_UE, exactly as eq. (3) of the paper does.)
+
+peak gain over all beams/angles: 24.00 24.00 24.00 24.00 24.00  dB  (PAA peak 24.00 dB)
+JPTA beam gain loss vs PAA: 0.00 dB
