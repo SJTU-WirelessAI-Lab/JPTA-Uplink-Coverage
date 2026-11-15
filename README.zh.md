@@ -324,8 +324,8 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 | 仓库 | 论文 | 补充内容 |
 |---|---|---|
 | `JPTA-Paradigm` | Ratnam等，IEEE Access 2022 | JPTA原始框架、Algorithm 1–3、与HBF的对比 |
-| `JPTA-3D-Beamforming` | Yildiz等，arXiv:2401.00819 | 3D子带波束设计：LS/∞-范数/贪心/梯度下降 |
-| `JPTA-System-Design` | Mo等，arXiv:2502.00139 | 二维type-1/type-2码本、TTD分辨率、系统级吞吐 |
+| `JPTA-3D-Beamforming` | Yildiz等，IEEE VTC2024-Fall | 3D子带波束设计：LS/∞-范数/贪心/梯度下降 |
+| `JPTA-System-Design` | Mo等，IEEE Asilomar Conf. 2024 | 二维type-1/type-2码本、TTD分辨率、系统级吞吐 |
 
 本文是另外两篇的链路抽象来源：Table 3（逐MCS的η）与式(11)的EESM被两处原样使用，
 两个仓库各自带一份该表（本仓库为`jp_mcs_table.m`，系统篇仓库为`jp_c17_mcs.m`）。

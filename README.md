@@ -363,8 +363,8 @@ Two bugs that were fixed (both listed in REPORT §5):
 | Repository | Paper | What it adds |
 |---|---|---|
 | `JPTA-Paradigm` | Ratnam et al., IEEE Access 2022 | the original JPTA formulation, Algorithms 1–3, HBF comparison |
-| `JPTA-3D-Beamforming` | Yildiz et al., arXiv:2401.00819 | 3-D sub-band beam design, LS / ∞-norm / greedy / gradient descent |
-| `JPTA-System-Design` | Mo et al., arXiv:2502.00139 | 2-D type-1/type-2 codebooks, TTD resolution, system-level throughput |
+| `JPTA-3D-Beamforming` | Yildiz et al., IEEE VTC2024-Fall | 3-D sub-band beam design, LS / ∞-norm / greedy / gradient descent |
+| `JPTA-System-Design` | Mo et al., IEEE Asilomar Conf. 2024 | 2-D type-1/type-2 codebooks, TTD resolution, system-level throughput |
 
 This is the paper the other two borrow their link abstraction from: Table 3 (η per MCS) and the
 EESM formula of eq. (11) are used verbatim by both, and both repositories ship this table as
