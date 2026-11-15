@@ -323,7 +323,7 @@ $$R=\underbrace{\frac{1}{N_{SZ}}}_{\text{占空比}}\cdot B\cdot \mathrm{SE}(N_{
 
 | 仓库 | 论文 | 补充内容 |
 |---|---|---|
-| `JPTA2022` | Ratnam等，IEEE Access 2022 | JPTA原始框架、Algorithm 1–3、与HBF的对比 |
+| `JPTA-Paradigm` | Ratnam等，IEEE Access 2022 | JPTA原始框架、Algorithm 1–3、与HBF的对比 |
 | `JPTA-3D-Beamforming` | Yildiz等，arXiv:2401.00819 | 3D子带波束设计：LS/∞-范数/贪心/梯度下降 |
 | `JPTA-System-Design` | Mo等，arXiv:2502.00139 | 二维type-1/type-2码本、TTD分辨率、系统级吞吐 |
 

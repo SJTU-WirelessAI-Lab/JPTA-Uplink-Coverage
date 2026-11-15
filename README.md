@@ -362,7 +362,7 @@ Two bugs that were fixed (both listed in REPORT §5):
 
 | Repository | Paper | What it adds |
 |---|---|---|
-| `JPTA2022` | Ratnam et al., IEEE Access 2022 | the original JPTA formulation, Algorithms 1–3, HBF comparison |
+| `JPTA-Paradigm` | Ratnam et al., IEEE Access 2022 | the original JPTA formulation, Algorithms 1–3, HBF comparison |
 | `JPTA-3D-Beamforming` | Yildiz et al., arXiv:2401.00819 | 3-D sub-band beam design, LS / ∞-norm / greedy / gradient descent |
 | `JPTA-System-Design` | Mo et al., arXiv:2502.00139 | 2-D type-1/type-2 codebooks, TTD resolution, system-level throughput |
 
